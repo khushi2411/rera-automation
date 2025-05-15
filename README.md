@@ -31,6 +31,12 @@ Install this dependency using npm:
 npm install
 ```
 
+### Service Account Key
+
+- rera-serviceAccountKey.json
+
+This file is required to authenticate with Firebase. Ensure you have downloaded the service account key from the Firebase console and placed it in the root directory of the project.
+
 ## Scripts
 
 To run the project, execute the following script:
