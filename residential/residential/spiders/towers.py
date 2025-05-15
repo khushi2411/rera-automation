@@ -28,7 +28,7 @@ class RERASpider(scrapy.Spider):
             'sec-ch-ua-platform': '"macOS"',
         }
         self.output_file = "tower_data.json"
-        self.input_file = "C:\\Users\\khush\\scripts-rera\\residential\\residential.csv"
+        self.input_file = "residential.csv"
 
     def load_action_ids(self):
         action_ids = []

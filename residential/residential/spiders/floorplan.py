@@ -31,7 +31,7 @@ class FloorPlanSpider(scrapy.Spider):
         }
 
         # CSV file with action IDs and JSON output
-        self.input_file = "C:\\Users\\khush\\scripts-rera\\residential\\residential.csv"
+        self.input_file = "residential.csv"
         self.output_file = "floorplan.json"
 
     def load_action_ids(self):

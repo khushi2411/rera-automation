@@ -1,6 +1,5 @@
 const fs = require('fs');
 const admin = require('firebase-admin');
-// const serviceAccount = require('./serviceAccountKey.json');
 const serviceAccount = require('./rera-serviceAccountKey.json');
 
 admin.initializeApp({
@@ -16,7 +15,7 @@ function loadDataset(filePath) {
 
 async function updateFirestoreDocuments(dataset) {
   for (const record of dataset) {
-    const docRef = db.collection('rera-new-plotted-urban').doc(record.id);
+    const docRef = db.collection('test-plotted').doc(record.id);
 
     try {
       await docRef.set(record, { merge: true });
@@ -29,7 +28,7 @@ async function updateFirestoreDocuments(dataset) {
 }
 
 async function main() {
-  const inputFilePath = './backups/new_users.json';
+  const inputFilePath = './plotted/final-rera-plotted.json';
   const dataset = loadDataset(inputFilePath);
   await updateFirestoreDocuments(dataset);
 }

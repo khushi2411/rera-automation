@@ -16,7 +16,7 @@ function loadDataset(filePath) {
 
 async function updateFirestoreDocuments(dataset) {
   for (const record of dataset) {
-    const docRef = db.collection('recent-residential-urban').doc(record.id);
+    const docRef = db.collection('test-residential').doc(record.id);
 
     try {
       await docRef.set(record, { merge: true });
@@ -29,7 +29,7 @@ async function updateFirestoreDocuments(dataset) {
 }
 
 async function main() {
-  const inputFilePath = './backups/new_users.json';
+  const inputFilePath = './residential/final-rera-residential.json';
   const dataset = loadDataset(inputFilePath);
   await updateFirestoreDocuments(dataset);
 }
