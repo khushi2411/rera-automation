@@ -1,36 +1,39 @@
+#!/bin/bash
 set -e
 
+# Function to log with timestamp
+log_with_timestamp() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a logs.txt
+}
 
-echo "scraping actionids"
+# Initialize log file
+log_with_timestamp "Starting RERA data processing pipeline"
+
+log_with_timestamp "Scraping actionids"
 python actionid-1.py
 
-echo "converting actionids to csv"
+log_with_timestamp "Converting actionids to csv"
 python json-to-csv-2.py
 
-echo "deleting actionid.json"
+log_with_timestamp "Deleting actionid.json"
 rm -f './utils/actionid.json'
 
-
-echo "Running residential shell scripts..."
+log_with_timestamp "Running residential shell scripts..."
 bash "./residential/run-residential-scripts.sh"
 
-echo "Running plotted shell scripts..."
+log_with_timestamp "Running plotted shell scripts..."
 bash './plotted/run-plotted-scripts.sh'
 
-echo "Shell scripts completed."
+log_with_timestamp "Shell scripts completed."
 
-
-
-echo "Running plotted upload script"
+log_with_timestamp "Running plotted upload script"
 node update-plotted.js
 
-echo "Running residentail upload script"
+log_with_timestamp "Running residential upload script"
 node update-residential.js
 
-
-
-echo "Deleting final merged files after upload"
+log_with_timestamp "Deleting final merged files after upload"
 rm -f './residential/final-rera-residential.json'
 rm -f './plotted/final-rera-plotted.json'
 
-echo "All tasks completed successfully!"
+log_with_timestamp "All tasks completed successfully!"

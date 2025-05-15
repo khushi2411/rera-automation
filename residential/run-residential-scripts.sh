@@ -1,30 +1,35 @@
 # Exit on error
 set -e
 
+# Function to log with timestamp
+log_with_timestamp() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a ../logs.txt
+}
+
 cd residential
 
-# Run scrapy crawlers
+log_with_timestamp "Starting residential data processing"
 
-echo "scraping residential basicdetails.."
+# Run scrapy crawlers
+log_with_timestamp "Scraping residential basicdetails..."
 scrapy crawl basicdetails
-echo "scraping residential floorplan.."
+log_with_timestamp "Scraping residential floorplan..."
 scrapy crawl floorplan
-echo "scraping residential inventory.."
+log_with_timestamp "Scraping residential inventory..."
 scrapy crawl inventory
-echo "scraping residential projectschedule.."
+log_with_timestamp "Scraping residential projectschedule..."
 scrapy crawl projectschedule
-echo "scraping residential towers.."
+log_with_timestamp "Scraping residential towers..."
 scrapy crawl towers
-echo "scraping residential units.."
+log_with_timestamp "Scraping residential units..."
 scrapy crawl units
 
-echo "Scrapy crawls completed."
+log_with_timestamp "All scrapy crawls completed successfully"
 
-echo "combining all residential fragmented data into a json"
+log_with_timestamp "Combining all residential fragmented data into a JSON file"
 python all-residential.py
 
-
-echo "deleting fragmented data"
+log_with_timestamp "Deleting fragmented data files"
 rm -f floorplan.json
 rm -f inventory.json
 rm -f projectdetails.json
@@ -33,6 +38,5 @@ rm -f tower_data.json
 rm -f unit_details.json
 rm -f residential.csv
 
-
-echo "Residential processing complete! Exit :)"
+log_with_timestamp "Residential processing complete! Exit :)"
 cd ..
