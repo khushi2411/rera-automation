@@ -5,7 +5,7 @@
 ### Python
 
 - scrapy
-- selenium
+- playwright
 - webdriver-manager
 
 Before installing these dependencies, it is recommended to create a virtual environment:
