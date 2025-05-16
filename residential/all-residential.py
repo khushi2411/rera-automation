@@ -24,13 +24,13 @@ def load_json(filename):
         return {}
 
 # File paths with full paths
-base_dir = "C:\\Users\\khush\\scripts-rera\\residential"
-project_details_path = os.path.join(base_dir, "projectdetails.json")
-project_schedule_path = os.path.join(base_dir, "projectschedule.json")
-inventory_path = os.path.join(base_dir, "inventory.json")
-tower_data_path = os.path.join(base_dir, "tower_data.json")
-floorplan_path = os.path.join(base_dir, "floorplan.json")
-unit_details_path = os.path.join(base_dir, "unit_details.json")
+
+project_details_path =  "projectdetails.json"
+project_schedule_path = "projectschedule.json"
+inventory_path =  "inventory.json"
+tower_data_path =  "tower_data.json"
+floorplan_path = "floorplan.json"
+unit_details_path =  "unit_details.json"
 
 # Load each JSON file
 project_details = load_json(project_details_path)
@@ -183,22 +183,14 @@ for key in all_keys:
     })
 
 # Create a backup folder if it doesn't exist
-backup_dir = os.path.join(base_dir, "backups")
-if not os.path.exists(backup_dir):
-    os.makedirs(backup_dir)
-    print(f"Created backup directory: {backup_dir}")
 
 # Write the consolidated data to rera-recent.json
-output_path = os.path.join(base_dir, "rera-residential.json")
+output_path = "final-rera-residential.json"
 with open(output_path, "w") as outfile:
     json.dump(all_projects, outfile, indent=2)
 
 print(f"Data consolidation complete! Output written to {output_path}")
 
-# Save a backup copy
-backup_path = os.path.join(backup_dir, "residential.json")
-with open(backup_path, "w") as outfile:
-    json.dump(all_projects, outfile, indent=2)
-print(f"Backup copy saved to {backup_path}")
+
 
 print("Conversion process complete!")

@@ -29,7 +29,7 @@ class UnitDetailsSpider(scrapy.Spider):
             'sec-ch-ua-platform': '"macOS"',
         }
 
-        self.input_file = "C:\\Users\\khush\\scripts-rera\\residential\\residential.csv"
+        self.input_file = "residential.csv"
         self.output_file = "unit_details.json"
 
     def load_action_ids(self):

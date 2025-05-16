@@ -1,1 +1,4 @@
 rera-serviceAccountKey.json
+.venv
+/node_modules
+logs.txt

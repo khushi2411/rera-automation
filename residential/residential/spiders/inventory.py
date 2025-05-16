@@ -24,7 +24,7 @@ class RERASpider(scrapy.Spider):
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
             'X-Requested-With': 'XMLHttpRequest',
         }
-        self.input_csv = "C:\\Users\\khush\\scripts-rera\\residential\\residential.csv"  # CSV file containing action IDs
+        self.input_csv = "residential.csv"  # CSV file containing action IDs
         self.output_file = "inventory.json"
 
     def start_requests(self):

@@ -9,7 +9,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 # ---------- Helper Functions for Persistence using JSON ----------
 
-def load_stored_identifier(filename="C:\\Users\\khush\\scripts-rera\\stored_identifier.json"):
+def load_stored_identifier(filename="./utils/stored_identifier.json"):
     """Load the stored RERA ID from a JSON file (if it exists)."""
     if os.path.exists(filename):
         with open(filename, "r", encoding="utf-8") as f:
@@ -21,12 +21,12 @@ def load_stored_identifier(filename="C:\\Users\\khush\\scripts-rera\\stored_iden
                 return None
     return None
 
-def save_stored_identifier(identifier, filename="C:\\Users\\khush\\scripts-rera\\stored_identifier.json"):
+def save_stored_identifier(identifier, filename="./utils/stored_identifier.json"):
     """Save the given RERA ID to a JSON file."""
     with open(filename, "w", encoding="utf-8") as f:
         json.dump({"stored_identifier": identifier}, f, indent=4)
 
-def save_projects_to_json(projects, filename="actionid.json"):
+def save_projects_to_json(projects, filename="./utils/actionid.json"):
     """Save the projects data to a JSON file."""
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(projects, f, indent=4)
@@ -215,7 +215,7 @@ def main():
         # 8. Save the project data to a JSON file
         # ------------------------------------------------------------
         if projects:
-            json_filename = "C:\\Users\\khush\\scripts-rera\\actionid.json"
+            json_filename = "./utils/actionid.json"
             save_projects_to_json(projects, json_filename)
             print(f"Latest action ID: {projects[0]['action_id']}")
             print(f"Latest formatted ID: {projects[0]['id']}")

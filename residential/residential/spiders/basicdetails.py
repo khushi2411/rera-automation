@@ -23,7 +23,7 @@ class RERASpider(scrapy.Spider):
                            'Chrome/131.0.0.0 Safari/537.36'),
             'X-Requested-With': 'XMLHttpRequest',
         }
-        self.input_file = "C:\\Users\\khush\\scripts-rera\\residential\\residential.csv"
+        self.input_file = "residential.csv"
         self.output_file = "projectdetails.json"
         self.extracted_results = []  # List to store results
 

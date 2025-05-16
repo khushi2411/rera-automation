@@ -23,7 +23,7 @@ class RERADevelopmentSpider(scrapy.Spider):
             'X-Requested-With': 'XMLHttpRequest',
         }
         # Update the CSV path as needed
-        self.input_csv = "C:\\Users\\khush\\scripts-rera\\plotted\\plotted.csv"
+        self.input_csv = "plotted.csv"
         self.output_file = "developmentdetails.json"
         self.extracted_results = {}  # Dictionary to store results keyed by action ID
 

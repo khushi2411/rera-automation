@@ -44,10 +44,9 @@ def remove_spaces_from_keys(data):
 # ------------------------------------------------------------------
 # Paths
 # ------------------------------------------------------------------
-base_dir = r"C:\Users\khush\scripts-rera\plotted"
-project_details_path = os.path.join(base_dir, "projectdetails.json")
-development_details_path = os.path.join(base_dir, "developmentdetails.json")
-output_path = os.path.join(base_dir, "rera-plotted.json")
+project_details_path =  "projectdetails.json"
+development_details_path = "developmentdetails.json"
+output_path = "final-rera-plotted.json"
 
 # ------------------------------------------------------------------
 # Load + sanitize JSON
@@ -117,14 +116,7 @@ for project in project_details_list:
 # ------------------------------------------------------------------
 # Output & backup
 # ------------------------------------------------------------------
-backup_dir = os.path.join(base_dir, "backups")
-os.makedirs(backup_dir, exist_ok=True)
 
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(merged_projects, f, ensure_ascii=False, indent=2)
 print(f"✅  Consolidated data written → {output_path}")
-
-backup_path = os.path.join(backup_dir, "plotted.json")
-with open(backup_path, "w", encoding="utf-8") as f:
-    json.dump(merged_projects, f, ensure_ascii=False, indent=2)
-print(f"🗃️  Backup saved → {backup_path}")

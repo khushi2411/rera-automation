@@ -29,7 +29,7 @@ class ProjectDetailsSpider(scrapy.Spider):
             'sec-ch-ua-platform': '"macOS"',
         }
         self.output_file = "projectschedule.json"
-        self.input_file = "C:\\Users\\khush\\scripts-rera\\residential\\residential.csv"
+        self.input_file = "residential.csv"
 
     def load_action_ids(self):
         action_ids = []
