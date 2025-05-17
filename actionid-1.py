@@ -55,10 +55,11 @@ async def main():
     
     async with async_playwright() as p:
         # Launch browser with custom arguments
-        browser = await p.chromium.launch(
-            headless=True,
-            args=browser_args
-        )
+       browser = p.chromium.launch(
+        proxy={
+            "server": "socks5://localhost:9090",
+        }
+    )
         
         # Create a context with custom settings
         context = await browser.new_context(
